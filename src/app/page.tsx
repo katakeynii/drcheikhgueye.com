@@ -4,8 +4,6 @@ import Image from 'next/image'
 import React from 'react';
 import { Inter } from 'next/font/google'
 import styles from './page.module.scss'
-import Navbar from './components/Navbar'
-import TextAnimation from "react-text-animations";
 import PageLayout from './components/PageLayout';
 import TextTransition, { presets } from "react-text-transition";
 const inter = Inter({ subsets: ['latin'] })

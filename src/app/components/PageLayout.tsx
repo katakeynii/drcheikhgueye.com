@@ -1,8 +1,9 @@
 // components/Layout/index.js
 
 import { motion } from "framer-motion";
+import React from "react";
 
-const PageLayout = ({ children }) => (
+const PageLayout = ({ children }: {children: React.ReactNode}) => (
   <motion.div
     initial={{ x: -600, opacity: 0 }}
     animate={{ x: 0, opacity: 1 }}
