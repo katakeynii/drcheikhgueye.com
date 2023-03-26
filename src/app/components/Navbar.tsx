@@ -1,10 +1,7 @@
 'use client';
 import Link from "next/link";
-import Image from "next/image";
 import React, { useState } from "react";
-import NavItem from "./NavItem";
-import TextAnimation from "react-text-animations";
-import { useRouter, usePathname } from 'next/navigation';
+import NavItem from "./NavItem"
 import TextTransition, { presets } from "react-text-transition";
 
 const MENU_LIST = [
