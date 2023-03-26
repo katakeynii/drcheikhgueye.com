@@ -1,0 +1,22 @@
+
+.main {
+  display: flex;
+  
+  gap: 20px;
+  width: 60%;
+  padding: 20px;
+  margin: 0 auto;
+  .books{
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    // grid-template-rows: 1fr 1fr;    
+    .book{
+      display: flex;
+      gap: 10px;
+      font-size: 1.3rem;
+      font-weight: 300;
+    }
+  }
+  // background: linear-gradient(#91d5aa, #a1d1a4);
+}
