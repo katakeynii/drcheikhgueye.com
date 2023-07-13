@@ -56,8 +56,11 @@ a {
   // padding: 1rem 1rem;
   &.active{
     right: 0;
-    border: 3px solid #91d5aa;
-    color: #91d5aa;
+    @media screen and (max-width: 960px) {
+      color: #91d5aa;
+      border: 3px solid #91d5aa;
+    }
+    border-bottom: 3px solid #91d5aa;
   }
 }
 .nav__link{
@@ -72,6 +75,7 @@ a {
 .close-mobile-menu{
   display: none;
   @media screen and (max-width: 960px) {
+    cursor: pointer;
     display: flex;
     padding: 30px;
     font-size: 2.3rem;

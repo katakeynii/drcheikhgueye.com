@@ -6,6 +6,17 @@
   width: 60%;
   padding: 20px;
   margin: 0 auto;
+  .otherBooks{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    .otherbook{
+      font-size: 1.2rem;
+      border-bottom: 1px solid #a3a3a3 ;
+      padding-bottom: 40px;
+  
+    }
+  }
   .books{
     display: grid;
     gap: 20px;
@@ -16,15 +27,18 @@
       gap: 10px;
       font-size: 1.3rem;
       font-weight: 300;
-      padding-bottom: 40px;
     }
     @media screen and (max-width: 960px) {
       grid-template-columns: repeat(1, 1fr);
       .book{
         justify-content: center;
         align-items: center;
+        padding-bottom: 40px;
         flex-direction: column;
         border-bottom: 2px solid #a3a3a3 ;
+        div{
+          align-items: center;
+        }
       }
       
     }
