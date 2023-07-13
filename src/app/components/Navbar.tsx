@@ -16,7 +16,6 @@ const Navbar = () => {
   const [navActive, setNavActive] = useState(false);
   const [activeIdx, setActiveIdx] = useState(-1);
   const [index, setIndex] = React.useState(0);
-
   React.useEffect(() => {
     const intervalId = setInterval(() =>
       setIndex(index => index + 1),
@@ -48,16 +47,15 @@ const Navbar = () => {
         </div>
         <div className={`${navActive ? "active" : ""} nav__menu-list`}>
           {MENU_LIST.map((menu, idx) => (
-            <div
-              onClick={() => {
-                setActiveIdx(idx);
-                setNavActive(false);
-              }}
-              key={menu.text}
-            >
-              <NavItem active={activeIdx === idx} {...menu} />
-            </div>
+              <NavItem 
+                onClick={() => {
+                  setActiveIdx(idx);
+                  setNavActive(false);
+                }}
+                key={menu.text}
+                active={activeIdx === idx} {...menu} />
           ))}
+          <a className="close-mobile-menu" onClick={() =>setNavActive(false)}>Fermer</a>
         </div>
       </nav>
     </header>

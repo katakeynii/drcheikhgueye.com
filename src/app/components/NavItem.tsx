@@ -5,12 +5,14 @@ interface NavItemProps {
     text: string;
     href: string;
     active: boolean;
+    onClick: () => void;
 }
-const NavItem = ({ text, href, active }: NavItemProps) => {
+const NavItem = ({ text, href, active, onClick }: NavItemProps) => {
   const pathname = usePathname();
   return (
-    <a href={href}>
+    <a href={href} onClick={onClick}>
       <div
+    
         className={`nav__item ${
           pathname === href ? "active" : ""
         }`}
