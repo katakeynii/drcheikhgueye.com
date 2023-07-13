@@ -3,7 +3,7 @@ import React from 'react'
 import styles from './page.module.scss'
 import PageLayout from '../components/PageLayout'
 import Image from 'next/image';
-
+import presentation from "../../assets/Frame 3.png"
 export default function page() {
   return (
     <PageLayout>
@@ -14,7 +14,7 @@ export default function page() {
         </div>
         <div className={styles.main}>
           <div className={styles.history}>
-            <Image className='img' alt="dad" src="https://placehold.it/300x500" width="300" height="500"/>
+            <Image className='img' alt="dad" src={presentation} style={{objectFit: 'cover' }}  width="300" height="500"/>
             <p className={styles.intro} >
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tempus, felis et laoreet posuere, libero tellus congue diam, vitae bibendum lectus ante aliquet massa. Ut porta purus a sapien mattis, eget dapibus nisi ultrices. Donec nec leo lacinia, lacinia nibh ut, posuere arcu. Duis in turpis nibh. Mauris purus ipsum, tristique nec auctor at, pharetra quis massa. Cras elementum dolor vel nulla tincidunt, et imperdiet quam auctor. Sed sed lorem convallis, convallis sapien quis, mollis felis. Etiam molestie maximus est, at fermentum turpis elementum ut. Nunc gravida rhoncus arcu ut ornare. Nullam lacinia lorem maximus congue fermentum. Proin eget ultrices libero. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Aenean interdum semper malesuada. Donec lobortis tempus libero, id imperdiet nunc.
               Aenean egestas, felis a efficitur ullamcorper, nibh felis consectetur libero, vitae tristique nisl neque sit amet sem. Vestibulum dapibus iaculis orci ut varius. Nunc porttitor nibh sed nulla finibus, et rutrum enim pharetra. Integer convallis leo nisi, et euismod lorem finibus nec. Mauris ornare nibh eget faucibus faucibus. Fusce sed lorem orci. Fusce dictum lobortis nibh. Duis a facilisis erat. Suspendisse consectetur molestie lectus. Nulla facilisi. Morbi bibendum viverra rutrum. Aenean eu massa nec justo commodo luctus non sed libero. Nunc vel dapibus lectus. Maecenas sagittis sapien tortor, nec iaculis odio dictum quis.

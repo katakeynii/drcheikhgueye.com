@@ -8,7 +8,7 @@ import PageLayout from './components/PageLayout';
 import TextTransition, { presets } from "react-text-transition";
 const inter = Inter({ subsets: ['latin'] })
 const titles = ['Docteur en science de l’éducation', 'Inspecteur Général de l’éducation nationale', 'Traducteur Arabe-Français-Anglais'];
-
+import main from '../assets/Frame 2.png';
 export default function Home() {
   const [index, setIndex] = React.useState(0);
 
@@ -25,7 +25,7 @@ export default function Home() {
 
         <div className={styles.presentationWrapper} >
           <div className={styles.coverContainer}>
-            <Image className='img' alt="dad" src="https://placehold.it/300x300" width="300" height="300"/>
+            <Image className='img' alt="dad" src={main} width="300" height="300"/>
           </div>
         <div>
           <h1 className={styles.name}>Dr. Cheikh GUEYE</h1>
