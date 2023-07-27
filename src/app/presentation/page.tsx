@@ -17,7 +17,7 @@ export default function page() {
             <Image className='img' alt="dad" src={presentation} style={{objectFit: 'cover' }}  width="300" height="500"/>
             <p className={[styles.intro, styles.paragraphContainer].join(" ")} >
               <p className={styles.paragraph} >
-              Le Dr Cheikh Gueye, né dans les années quarante, à Louga, est l'un des principaux chercheurs et éducateurs travaillant, toujours, à faire progresser l'éducation en Afrique en général, et au Sénégal en particulier. Il a servi l'éducation arabo-islamique dans plusieurs domaines. A noter aussi que M. Gueye est francophone de formation, pour avoir fréquenté l’école française jusqu’au Brevet et passé plus de dix ans à l’école publique, comme instituteur, période au cours de laquelle il obtint comme diplômes professionnels le certificat élémentaire d’aptitude pédagogique (CEAP), le Brevet Supérieur de Capacité (BSC) et le Certificat d’Aptitude Pédagogique (CAP). 
+              Le Dr Cheikh Gueye, né dans les années quarante, à Louga, est l&apos;un des principaux chercheurs et éducateurs travaillant, toujours, à faire progresser l&apos;éducation en Afrique en général, et au Sénégal en particulier. Il a servi l&apos;éducation arabo-islamique dans plusieurs domaines. A noter aussi que M. Gueye est francophone de formation, pour avoir fréquenté l’école française jusqu’au Brevet et passé plus de dix ans à l’école publique, comme instituteur, période au cours de laquelle il obtint comme diplômes professionnels le certificat élémentaire d’aptitude pédagogique (CEAP), le Brevet Supérieur de Capacité (BSC) et le Certificat d’Aptitude Pédagogique (CAP). 
               </p>
               <p className={styles.paragraph}>
 
@@ -35,7 +35,7 @@ export default function page() {
               Outre sa qualité d’inspecteur de l’enseignement de langue française, M. Gueye fut nommé, en 2004, inspecteur général de l’éducation et de la formation, chargé de l’élémentaire. Il fut l’initiateur de l’ouverture de l’option arabe au département des élèves-inspecteurs de la Faculté des sciences et technologies de l’éducation et de la formation (FASTEF) où il forma, en langue arabe, les élèves inspecteurs arabophones de 1986 à 2015, date de son admission à faire valoir ses droits à une pension de retraite. En plus de tout cela, M Gueye est spécialisé dans la didactique de l’arabe, la recherche et la traduction français - anglais - arabe. 
               </p>
               <p className={styles.paragraph}>
-              Dans ce domaine, ce qui lui a valu une renommée mondiale, c'est sa traduction de nombreux ouvrages islamiques provenant de divers pays, notamment sa traduction réussie, en langue française, de la biographie du Prophète (paix et salut sur lui) intitulée (Ar Raheeq Al Makhtum) « Le Nectar cacheté », du Cheikh Safi Ar Rahman Al Mubar Kafurî, traduction pour laquelle il a été primé, dans les années 90, comme meilleur traducteur du monde islamique. 
+              Dans ce domaine, ce qui lui a valu une renommée mondiale, c&apos;est sa traduction de nombreux ouvrages islamiques provenant de divers pays, notamment sa traduction réussie, en langue française, de la biographie du Prophète (paix et salut sur lui) intitulée (Ar Raheeq Al Makhtum) « Le Nectar cacheté », du Cheikh Safi Ar Rahman Al Mubar Kafurî, traduction pour laquelle il a été primé, dans les années 90, comme meilleur traducteur du monde islamique. 
 
               </p>
             </p>
