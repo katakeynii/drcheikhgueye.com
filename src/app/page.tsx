@@ -12,10 +12,14 @@ import main from '../assets/Frame 2.png';
 
 import bookCover from '../assets/Couverture Livre.png';
 import { DownloadForm } from './components/DownloadForm';
+import useModalStore from '@/stores/useModalStore';
+import { OrderForm } from './components/OrderForm';
 
 export default function Home() {
   console.log(process.env)
   const [index, setIndex] = React.useState(0);
+  const {isModalOpen, toggleModal, openedModal} = useModalStore((state) => state)
+
   return (
     <PageLayout>
       <main className={styles.main} id="head">
@@ -35,7 +39,8 @@ export default function Home() {
             </div>
             <div>
               <h1 className={styles.bookTitle}>Nouvelle Approche de la grammaire arabe</h1>
-              <div>
+              <div className={styles.bookPrice}> 10 000 <sup>FCFA</sup> </div>
+              <div className={styles.bookDescription}>
                 <p>
                   L'arabe est une langue sémitique originaire de la péninsule arabique, qui s'est largement répandue à travers le monde grâce à l'expansion territoriale au Moyen Âge et à la diffusion du Saint Coran. Elle est désormais l'une des langues les plus parlées au monde, étant la langue officielle de plus de vingt pays et d'organisations internationales comme l'ONU. L'arabe se divise en deux formes principales : l'arabe dialectal et l'arabe littéraire (ou classique), avec ce manuel visant à enseigner la grammaire arabe aux francophones.
                 </p>
@@ -47,28 +52,17 @@ export default function Home() {
                 </p>
               </div>
               <div className={styles.buttons}>
-                <div className={`${styles.dwldbtn}`}> Télécharger le Premier chapitre </div>
-                <div  className={`${styles.buybtn}`}> Acheter le livre </div>
+                <div className={`${styles.dwldbtn}`} onClick={() => toggleModal('DOWNLOADS')}> Télécharger le Premier chapitre </div>
+                <div  className={`${styles.buybtn}`}  onClick={() => toggleModal('ORDERS')}> Commander le livre </div>
               </div>
             </div>
           </div>
 
         </div>
-        {/* <div className={styles.presentationWrapper} >
-          <div className={styles.coverContainer}>
-            <Image className='img' alt="dad" src={main} width="300" height="300"/>
-          </div>
-        <div>
-          <h1 className={styles.name}>Dr. Cheikh GUEYE</h1>
-            <h2 className={styles.fonction} >
-            <TextTransition springConfig={presets.wobbly} direction='down'>
-                {titles[index % titles.length]}
-              </TextTransition>
-            </h2>
-        </div>
-        </div> */}
+
       </main>
-      <DownloadForm/>
+        {openedModal === "DOWNLOADS" && <DownloadForm/> }     
+        {openedModal === "ORDERS" && <OrderForm /> }     
     </PageLayout>
   )
 }

@@ -2,18 +2,20 @@ import { useState, useEffect } from "react";
 import styles from '../page.module.scss'
 import Image from 'next/image'
 import bookCover from '../../assets/Couverture Livre.png';
+import useModalStore from "@/stores/useModalStore";
 
 
-export const PopupContainer = ({isOpen, title, children}) => {
+export const PopupContainer = ({title, children}) => {
     const [open, setOpen] = useState(false);
+    const {isModalOpen, toggleModal, openedModal} = useModalStore((state) => state)
     useEffect(() => {
-      setOpen(isOpen)
-    }, [isOpen]);
+      setOpen(isModalOpen)
+    }, [isModalOpen]);
     if(!open) return null
     return(
       <div className={styles.popupContainer} >
           <div className={styles.content} >
-            <div className={styles.closePopup} onClick={() => setOpen(false)}> Fermer </div>
+            <div className={styles.closePopup} onClick={() => toggleModal(openedModal)}> Fermer </div>
             <h1 className={styles.popupHead} >{title}</h1>
             <div className={styles.box} >
               <div>

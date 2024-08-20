@@ -12,13 +12,14 @@ type Inputs = {
   email: string
   name: string
   whatsapp: string
+  quantity: string
 }
 
 import { readData } from './_lib/gsheets/readSheet';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import useModalStore from "@/stores/useModalStore";
 
-export const DownloadForm =  () => {
+export const OrderForm =  () => {
     const {
       register,
       handleSubmit,
@@ -33,16 +34,17 @@ export const DownloadForm =  () => {
       let {
         email,
         name,
-        whatsapp
+        whatsapp,
+        quantity
       } = data;
       try {
-        const response = await fetch('/api/gsheets', {
+        const response = await fetch('/api/orders', {
           method: 'POST', // Specify the HTTP method
           headers: {
             'Content-Type': 'application/json', // Set the content type to JSON
           },
           body: JSON.stringify({
-            name, email, whatsapp
+            name, email, whatsapp, quantity
           }), // Convert the user object to a JSON string
         });
         if (!response.ok) {
@@ -78,7 +80,7 @@ export const DownloadForm =  () => {
     const formRenderer = () => (
         <form onSubmit={handleSubmit(onSubmit)}>
           <div >
-            <h2>Téléchargez gratuit un aperçu du livre</h2>
+            <h2>Faites votre commande du livre</h2>
           </div>
           <div className={styles.formGroup}>
             <label className={styles.formLabel}>Nom complet </label>
@@ -88,11 +90,24 @@ export const DownloadForm =  () => {
           <div className={styles.formGroup}>
             <label className={styles.formLabel}>Email</label>
             {errors.name && <span className={styles.requiredField}>This field is required</span>}
-            <input className={styles.formControl} {...register("email", {required: true})}  />
+            <input className={styles.formControl} type='email' {...register("email", {required: true})}  />
           </div>
           <div className={styles.formGroup}>
             <label className={styles.formLabel}>Numero de téléphone (Whatsapp) </label>
+            {errors.name && <span className={styles.requiredField}>This field is required</span>}
             <input className={styles.formControl} {...register("whatsapp", {required: true})}  />
+          </div>
+          <div className={styles.formGroup}>
+            <label className={styles.formLabel}>Quantité </label>
+            {errors.quantity && errors.quantity.type === "required" && (
+              <span className={styles.requiredField} role="alert">This is required</span>
+            )}
+            {errors.quantity && errors.quantity.type === "max" && (
+              <span className={styles.requiredField} role="alert">Vous ne pouvez pas commander plus de 10 livres</span>
+            )}
+            <input className={styles.formControl} 
+              type="number" 
+              {...register("quantity", {required: true, min: 1, max: 10})}  />
           </div>
           <div className={styles.formGroup}>
             {isLoading ? (
@@ -109,14 +124,14 @@ export const DownloadForm =  () => {
                     width={200}
                   />
               ): 
-              (<button className={styles.drbtn} type="submit" > Télécharger</button>) 
+              (<button className={styles.drbtn} type="submit" > Commande</button>) 
             } 
             
           </div>
         </form>
     )
     return(
-      <PopupContainer title="Télécharger gratuitement le premier chapitre">
+      <PopupContainer title="Passez votre commande">
           {!isSent ? formRenderer() : onSentRenderer() }
       </PopupContainer>
     );
