@@ -4,11 +4,72 @@
   // padding-top: 6rem;
   min-height: calc(100vh - 90px);
   justify-content: center;
-  align-items: center;
+  padding-top: 60px;
+  // align-items: center;
   // background: linear-gradient(#91d5aa, #a1d1a4);
+  &.modal-opened{
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+  }
   @media screen  and (max-width: 768px) {
     align-items: start;
   }
+  .homePresentation{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .titles{
+    font-size: 0.8rem;
+  }
+  .name{
+    font-weight: 100;
+    font-size: 3rem;
+  }
+  .avatar{
+    border-radius: 300px;
+    border: 4px solid #fff;
+    border-radius: 100%;
+    // box-shadow: 0px 0px 20px 5px #717171;
+    box-sizing: border-box;
+  }
+  
+}
+.bookPresentation{
+  display: flex;
+  gap: 1em;
+  margin: 0 auto;
+  .bookCover{
+    background: red;
+    width: 300px;
+    height: 500px
+  }
+  .bookTitle{
+    width: 80%;
+  }
+  .buttons{
+    display: flex;
+    gap: 1rem;
+    // flex-direction: column;
+    .btn{
+      border-radius: 10px;
+      padding: 10px 20px;
+      &.dwld_btn{
+        // background: red;
+      }
+      &.buy_btn{
+        background: #91d5aa;
+      }
+    }
+  }
+}
+.container{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 70%;
+  margin: 0 auto;
 }
 .presentationWrapper{
   display: grid;
@@ -70,3 +131,228 @@
   }
 }
 
+
+
+
+/* CSS */
+.buybtn {
+  appearance: button;
+  background-color: darken(#91d5aa, 20);
+  border: solid transparent;
+  border-radius: 6px;
+  border-width: 0 0 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: din-round,sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .8px;
+  line-height: 20px;
+  margin: 0;
+  outline: none;
+  overflow: visible;
+  padding: 13px 26px;
+  text-align: center;
+  text-transform: uppercase;
+  touch-action: manipulation;
+  transform: translateZ(0);
+  transition: filter .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  // width: 100%;
+  width: auto;
+  color: #464646;
+}
+
+.buybtn:after {
+  background-clip: padding-box;
+  background-color: #91d5aa;
+  border: solid transparent;
+  border-radius: 6px;
+  border-width: 0 0 4px;
+  bottom: -4px;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.buybtn:main,
+.buybtn:focus {
+  user-select: auto;
+}
+
+.buybtn:hover:not(:disabled) {
+  filter: brightness(1.1);
+  -webkit-filter: brightness(1.1);
+}
+
+.buybtn:disabled {
+  cursor: auto;
+}
+
+.buybtn:active {
+  border-width: 4px 0 0;
+  background: none;
+}
+
+
+
+/* CSS DOWNLOAD */
+.dwldbtn {
+  background: #464646;
+  border: 1px solid #464646;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 16px;
+  min-height: 40px;
+  outline: 0;
+  padding: 12px 14px;
+  text-align: center;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+
+.dwldbtn:hover,
+.dwldbtn:active {
+  background-color: initial;
+  background-position: 0 0;
+  color: #464646;
+}
+
+.dwldbtn:active {
+  opacity: .5;
+}
+
+.popupContainer{
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  top: 0;
+  left: 0;
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(2px);
+  .content{
+    // width: 70%;
+    background: #fff;
+    padding: 3rem;
+    min-width: 50%;
+    position: relative;
+    .closePopup{
+      position: absolute;
+      right: -10px;
+      top: -10px;
+      background: #f00;
+      padding: 5px 10px;
+      color: #fff;
+      font-size: 12px;
+    }
+    .box{
+      display: flex;
+      gap: 2rem;
+    }
+
+    .formGroup{
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      gap: 10px;
+      .formLabel{
+        font-weight: 900;
+        font-size: .8rem;
+        color: #464646;
+      }
+      .formControl{
+        display: block;
+        padding: 10px 15px;
+        color: #464646;
+        font-size: 17px;
+        font-weight: 100;
+        appearance: none; // Fix appearance for date inputs in Safari
+        // background-color: $input-bg;
+        background-clip: padding-box;
+        border: 1px solid rgb(195, 195, 195);
+        border-radius: 8px;
+      }
+    }
+  }
+}
+.formContainer{
+  flex: 1;
+  display: flex;
+  width: 100%;
+  form{
+    width: 100%;
+  }
+}
+
+// ==============================================================================
+// ==============================================================================
+// ==============================================================================
+/* CSS DRBTN */
+.drbtn {
+  background: #464646;
+  border: 1px solid #464646;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 16px;
+  min-height: 40px;
+  outline: 0;
+  padding: 12px 14px;
+  text-align: center;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+
+.drbtn:hover,
+.drbtn:active {
+  background-color: darken(#464646, 20);
+  background-position: 0 0;
+  // color: #464646;
+}
+
+.drbtn:active {
+  opacity: .5;
+}
+
+.popupHead{
+  padding: 0rem 0rem 3rem 0rem;
+  font-weight: 100;
+}
+.requiredField{
+  color: red;
+  font-size: 10px;
+}
