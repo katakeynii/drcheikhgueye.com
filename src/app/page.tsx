@@ -34,7 +34,7 @@ export default function Home() {
             <Image className={styles.avatar} alt="dad" src={main} width="100" height="100"/>
             <div>
               <h1 className={styles.name}>Dr. Cheikh GUEYE</h1>
-              <div className={styles.titles} >{titles.map(t => (<div>{t}</div>) )}</div>
+              <div className={styles.titles} >{titles.map((t, i) => (<div key={i} >{t}</div>) )}</div>
             </div>
           </div>
           <div className={styles.bookPresentation}>
@@ -46,13 +46,13 @@ export default function Home() {
               <div className={styles.bookPrice}> 10 000 <sup>FCFA</sup> </div>
               <div className={styles.bookDescription}>
                 <p>
-                  L'arabe est une langue sémitique originaire de la péninsule arabique, qui s'est largement répandue à travers le monde grâce à l'expansion territoriale au Moyen Âge et à la diffusion du Saint Coran. Elle est désormais l'une des langues les plus parlées au monde, étant la langue officielle de plus de vingt pays et d'organisations internationales comme l'ONU. L'arabe se divise en deux formes principales : l'arabe dialectal et l'arabe littéraire (ou classique), avec ce manuel visant à enseigner la grammaire arabe aux francophones.
+                  {"L'arabe est une langue sémitique originaire de la péninsule arabique, qui s'est largement répandue à travers le monde grâce à l'expansion territoriale au Moyen Âge et à la diffusion du Saint Coran. Elle est désormais l'une des langues les plus parlées au monde, étant la langue officielle de plus de vingt pays et d'organisations internationales comme l'ONU. L'arabe se divise en deux formes principales : l'arabe dialectal et l'arabe littéraire (ou classique), avec ce manuel visant à enseigner la grammaire arabe aux francophones."}
                 </p>
                 <p>
-                  Ce manuel aborde les défis de l'apprentissage de l'arabe pour les francophones, en soulignant que les obstacles sont principalement conceptuels et méthodologiques, plutôt que linguistiques. Il structure son contenu en trois parties : la morphologie lexicale des mots arabes, la morphologie grammaticale des mots en fonction de diverses catégories grammaticales, et les fonctions syntaxiques des mots dans la phrase. Chaque section est conçue pour aider les apprenants à concilier les réalités grammaticales de l'arabe avec celles du français, facilitant ainsi leur acquisition de la langue.
+                  {"Ce manuel aborde les défis de l'apprentissage de l'arabe pour les francophones, en soulignant que les obstacles sont principalement conceptuels et méthodologiques, plutôt que linguistiques. Il structure son contenu en trois parties : la morphologie lexicale des mots arabes, la morphologie grammaticale des mots en fonction de diverses catégories grammaticales, et les fonctions syntaxiques des mots dans la phrase. Chaque section est conçue pour aider les apprenants à concilier les réalités grammaticales de l'arabe avec celles du français, facilitant ainsi leur acquisition de la langue."}
                 </p>
                 <p>
-                    Enfin, l'ouvrage, tout en offrant une approche pédagogique détaillée, cherche à guider les apprenants de manière méthodique dans leur apprentissage de l'arabe, en espérant que ce travail soit bénéfique non seulement dans cette vie mais aussi au Jour de la Résurrection, selon les croyances islamiques.
+                    {"Enfin, l'ouvrage, tout en offrant une approche pédagogique détaillée, cherche à guider les apprenants de manière méthodique dans leur apprentissage de l'arabe, en espérant que ce travail soit bénéfique non seulement dans cette vie mais aussi au Jour de la Résurrection, selon les croyances islamiques."}
                 </p>
               </div>
               <div className={styles.buttons}>

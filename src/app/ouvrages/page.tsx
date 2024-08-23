@@ -4,7 +4,8 @@ import styles from './page.module.scss'
 import Navbar from '../components/Navbar'
 import Image from 'next/image'
 import mixpanel from '@/services/mixpanel'
-export default function page() {
+
+export default function Page() {
   useEffect(() => {
     mixpanel.track('Page View', {
       'Page Name': 'Ouvrages'

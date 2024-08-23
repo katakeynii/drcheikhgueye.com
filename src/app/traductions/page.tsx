@@ -4,7 +4,7 @@ import styles from './page.module.scss'
 import Navbar from '../components/Navbar'
 import Image from 'next/image'
 import mixpanel from '@/services/mixpanel'
-export default function page() {
+export default function Page() {
   useEffect(() => {
     // time an event named 'Registered'
     mixpanel.time_event('Page Opened');

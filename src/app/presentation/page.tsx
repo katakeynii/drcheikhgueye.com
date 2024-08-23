@@ -5,7 +5,8 @@ import PageLayout from '../components/PageLayout'
 import Image from 'next/image';
 import presentation from "../../assets/Frame 3.png"
 import mixpanel from '@/services/mixpanel';
-export default function page() {
+
+export default function Page() {
   useEffect(() => {
     mixpanel.track('Page View', {
       'Page Name': 'Presentation'
