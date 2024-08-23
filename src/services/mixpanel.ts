@@ -1,8 +1,9 @@
 //Import Mixpanel SDK
 import mixpanel from "mixpanel-browser";
  
+const MIX_KEY = process.env.NEXT_PUBLIC_MIXPANEL_APP_KEY ?? "";
 // Near entry of your product, init Mixpanel
-mixpanel.init(process.env.NEXT_PUBLIC_MIXPANEL_APP_KEY, {
+mixpanel.init(MIX_KEY, {
   debug: true,
   track_pageview: true,
   persistence: "localStorage",

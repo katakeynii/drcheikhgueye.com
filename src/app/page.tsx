@@ -39,7 +39,7 @@ export default function Home() {
           </div>
           <div className={styles.bookPresentation}>
             <div >
-              <Image className={styles.cover} alt="dad" src={bookCover} width="300" height="auto"/>
+              <Image className={styles.cover} alt="dad" src={bookCover} width="300" />
             </div>
             <div>
               <h1 className={styles.bookTitle}>Nouvelle Approche de la grammaire arabe</h1>

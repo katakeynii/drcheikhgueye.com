@@ -15,7 +15,6 @@ type Inputs = {
   quantity: string
 }
 
-import { readData } from './_lib/gsheets/readSheet';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import useModalStore from "@/stores/useModalStore";
 import mixpanel from "@/services/mixpanel";
