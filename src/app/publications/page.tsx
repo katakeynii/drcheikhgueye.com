@@ -1,11 +1,17 @@
 "use client" 
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from './page.module.scss'
 import Navbar from '../components/Navbar'
 import PageLayout from '../components/PageLayout'
 import Image from 'next/image'
+import mixpanel from '@/services/mixpanel'
 
 export default function page() {
+  useEffect(() => {
+    mixpanel.track('Page View', {
+      'Page Name': 'Publications'
+    })
+  }, [])
   return (
     <PageLayout>
     <div>

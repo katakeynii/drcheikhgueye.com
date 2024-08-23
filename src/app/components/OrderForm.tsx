@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { PopupContainer } from "./PopupContainer";
 import styles from '../page.module.scss'
@@ -18,6 +18,7 @@ type Inputs = {
 import { readData } from './_lib/gsheets/readSheet';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import useModalStore from "@/stores/useModalStore";
+import mixpanel from "@/services/mixpanel";
 
 export const OrderForm =  () => {
     const {
@@ -29,7 +30,13 @@ export const OrderForm =  () => {
     const [isSent, setIsSent] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const {isModalOpen, toggleModal} = useModalStore((state) => state)
+    useEffect(() => {
+      mixpanel.time_event('Setting Order')
+    }, [])
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
+      mixpanel.track("Submit Order", {
+        "Data": data
+      })
       setIsLoading(true)
       let {
         email,
@@ -50,10 +57,16 @@ export const OrderForm =  () => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
+        mixpanel.track('Setting Order', {
+          "Status": "Order successful"
+        })
         setIsSent(true)
         setIsLoading(false)
         const data = await response.json();
       } catch (error) {
+        mixpanel.track('Setting Order', {
+          "Status": "Order Failed"
+        })
         setIsLoading(false)
       }
       // const shData = await readData();
@@ -73,8 +86,8 @@ export const OrderForm =  () => {
               height={200}
               width={200}
             />
-          <h2>Aperçu envoyé avec succès</h2>
-          <div>Veuillez consulter votre adresse email</div>
+          <h2>Commande reçue</h2>
+          <div>Votre commande a été bien envoyée. Au traitement de votre commande, nous vous contacterons pour les modalités de paiement et de livraison. Merci</div>
         </div>
     )
     const formRenderer = () => (

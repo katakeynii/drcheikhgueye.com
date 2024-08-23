@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { PopupContainer } from "./PopupContainer";
 import styles from '../page.module.scss'
@@ -17,6 +17,7 @@ type Inputs = {
 import { readData } from './_lib/gsheets/readSheet';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import useModalStore from "@/stores/useModalStore";
+import mixpanel from "@/services/mixpanel";
 
 export const DownloadForm =  () => {
     const {
@@ -27,6 +28,9 @@ export const DownloadForm =  () => {
     } = useForm<Inputs>()
     const [isSent, setIsSent] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    useEffect(() => {
+      mixpanel.time_event('Filling Download')
+    }, [])
     const {isModalOpen, toggleModal} = useModalStore((state) => state)
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
       setIsLoading(true)
@@ -48,6 +52,7 @@ export const DownloadForm =  () => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
+        mixpanel.track('Filling Download')
         setIsSent(true)
         setIsLoading(false)
         const data = await response.json();
@@ -72,7 +77,7 @@ export const DownloadForm =  () => {
               width={200}
             />
           <h2>Aperçu envoyé avec succès</h2>
-          <div>Veuillez consulter votre adresse email</div>
+          <div>Un exemplaire vous a été envoyé. Veuillez consulté votre adresse email. Merci</div>
         </div>
     )
     const formRenderer = () => (

@@ -1,8 +1,21 @@
-import React from 'react'
+'use client';
+import React, { useEffect } from 'react'
 import styles from './page.module.scss'
 import Navbar from '../components/Navbar'
 import Image from 'next/image'
+import mixpanel from '@/services/mixpanel'
 export default function page() {
+  useEffect(() => {
+    // time an event named 'Registered'
+    mixpanel.time_event('Page Opened');
+
+    mixpanel.track('Page View', {
+      'Page Name': 'Traductions'
+    })
+    return () => {
+      mixpanel.track('Page Opened', {'Page Name': 'Traductions'});
+    }
+  }, [])
   return (
     <div>
         <div className="page-title">

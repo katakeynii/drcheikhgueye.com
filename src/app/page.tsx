@@ -14,12 +14,16 @@ import bookCover from '../assets/Couverture Livre.png';
 import { DownloadForm } from './components/DownloadForm';
 import useModalStore from '@/stores/useModalStore';
 import { OrderForm } from './components/OrderForm';
+import mixpanel from '@/services/mixpanel';
 
 export default function Home() {
-  console.log(process.env)
   const [index, setIndex] = React.useState(0);
   const {isModalOpen, toggleModal, openedModal} = useModalStore((state) => state)
-
+  useEffect(() => {
+    mixpanel.track('Page View', {
+      'Page Name': 'Accueil'
+    })
+  }, [])
   return (
     <PageLayout>
       <main className={styles.main} id="head">

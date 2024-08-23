@@ -1,10 +1,16 @@
 "use client";
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from './page.module.scss'
 import PageLayout from '../components/PageLayout'
 import Image from 'next/image';
 import presentation from "../../assets/Frame 3.png"
+import mixpanel from '@/services/mixpanel';
 export default function page() {
+  useEffect(() => {
+    mixpanel.track('Page View', {
+      'Page Name': 'Presentation'
+    })
+  }, [])
   return (
     <PageLayout>
 
