@@ -76,7 +76,11 @@ export const DownloadForm =  () => {
               width={200}
             />
           <h2>Aperçu envoyé avec succès</h2>
-          <div>Un exemplaire vous a été envoyé. Veuillez consulté votre adresse email. Merci</div>
+          <div>
+              <div>Un exemplaire vous a été envoyé.</div>
+              <div>Veuillez consulté votre adresse email.</div> 
+              <div>Merci</div>
+          </div>
         </div>
     )
     const formRenderer = () => (

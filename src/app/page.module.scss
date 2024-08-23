@@ -2,7 +2,7 @@ $primaryColor: #91d5aa;
 .main {
   display: flex;
   // padding-top: 6rem;
-  min-height: calc(100vh - 90px);
+  // min-height: calc(100vh - 90px);
   justify-content: center;
   padding-top: 60px;
   // align-items: center;
@@ -435,6 +435,7 @@ footer.footer{
   padding: 10px 30px;
   display: flex;
   justify-content: space-between;
+  margin-top: 60px;
 }
 .footerLeft{
   display: flex;
@@ -449,6 +450,10 @@ footer.footer{
   a{
     font-weight: bold;
   }
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 .footerFuncs{
   font-size: 10px;
@@ -460,4 +465,7 @@ footer.footer{
   align-items: baseline;
   justify-content: center;
   margin-left: 10px;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 }

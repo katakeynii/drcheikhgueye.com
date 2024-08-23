@@ -4,12 +4,6 @@ body {
   padding: 0;
   margin: 0;
   font-family: Inter;
-}
-html {
-	scroll-behavior: smooth;
-}
-
-body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
@@ -17,6 +11,17 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+
 }
 h1,h2,h3{
   margin: 0;

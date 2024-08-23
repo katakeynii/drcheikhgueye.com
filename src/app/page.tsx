@@ -56,7 +56,7 @@ export default function Home() {
                 </p>
               </div>
               <div className={styles.buttons}>
-                <div className={`${styles.dwldbtn}`} onClick={() => toggleModal('DOWNLOADS')}> Télécharger le Premier chapitre </div>
+                <div className={`${styles.dwldbtn}`} onClick={() => toggleModal('DOWNLOADS')}> Télécharger la première leçon </div>
                 <div  className={`${styles.buybtn}`}  onClick={() => toggleModal('ORDERS')}> Commander le livre </div>
               </div>
             </div>
