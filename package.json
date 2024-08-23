@@ -13,11 +13,11 @@
     "deploy:local": "yarn build:local && pm2 startOrRestart  ecosystem.config.js --env local",
     "deploy:dev": "yarn build:dev && pm2 startOrRestart  ecosystem.config.js --env dev",
     "deploy:prod": "yarn build:prod && pm2 startOrRestart  ecosystem.config.js --env prod"
-
   },
   "dependencies": {
     "@lottiefiles/dotlottie-react": "^0.8.8",
     "@netlify/plugin-nextjs": "^4.32.2",
+    "@next/bundle-analyzer": "^14.2.6",
     "@notion-render/bookmark-plugin": "^0.0.2",
     "@notion-render/client": "^0.0.2",
     "@notion-render/hljs-plugin": "^0.0.2",
