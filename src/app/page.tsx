@@ -43,7 +43,7 @@ export default function Home() {
             </div>
             <div>
               <h1 className={styles.bookTitle}>Nouvelle Approche de la grammaire arabe</h1>
-              <div className={styles.bookPrice}> 10 000 <sup>FCFA</sup> </div>
+              <div className={styles.bookPrice}> 15 000 <sup>FCFA</sup> </div>
               <div className={styles.bookDescription}>
                 <p>
                   {"L'arabe est une langue sémitique originaire de la péninsule arabique, qui s'est largement répandue à travers le monde grâce à l'expansion territoriale au Moyen Âge et à la diffusion du Saint Coran. Elle est désormais l'une des langues les plus parlées au monde, étant la langue officielle de plus de vingt pays et d'organisations internationales comme l'ONU. L'arabe se divise en deux formes principales : l'arabe dialectal et l'arabe littéraire (ou classique), avec ce manuel visant à enseigner la grammaire arabe aux francophones."}
