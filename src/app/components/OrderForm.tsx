@@ -86,7 +86,11 @@ export const OrderForm =  () => {
               width={200}
             />
           <h2>Commande reçue</h2>
-          <div>Votre commande a été bien envoyée. Au traitement de votre commande, nous vous contacterons pour les modalités de paiement et de livraison. Merci</div>
+          <div className={styles.opsSuccess}>
+            <div>Votre commande a été bien envoyée. </div>
+            <div>Au traitement de votre commande, nous vous contacterons pour les modalités de paiement et de livraison. </div>
+            <div>Merci</div>
+          </div>
         </div>
     )
     const formRenderer = () => (
