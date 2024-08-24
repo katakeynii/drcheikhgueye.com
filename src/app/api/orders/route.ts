@@ -1,3 +1,4 @@
+import { formatDate } from "@/services/dateConversion"
 import {google} from "googleapis"
 // export async function GET(request: Request, res) {
 //     return new Response('Hello, Baaay.js!')
@@ -27,6 +28,7 @@ export async function POST(request: Request) {
     try{
         const body = await request.json();
         const { name, email, whatsapp, quantity } = body;
+        const date = formatDate(new Date());
         const response = await sheets.spreadsheets.values.append({
             range: range,
             spreadsheetId: process.env.NEXT_PUBLIC_GOOGLE_SHEET_ID,
@@ -34,7 +36,7 @@ export async function POST(request: Request) {
             insertDataOption: 'INSERT_ROWS',
             requestBody: {
                 values: [
-                    [name, email, whatsapp, quantity, "NO", "NO", "NO"]
+                    [name, email, whatsapp, quantity, "NO", "NO", "NO", date]
                 ]
             }
         })
