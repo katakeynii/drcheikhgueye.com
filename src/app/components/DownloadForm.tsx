@@ -55,6 +55,25 @@ export const DownloadForm =  () => {
         setIsSent(true)
         setIsLoading(false)
         const data = await response.json();
+        const brevoUrl = process.env.NEXT_PUBLIC_BREVO_URL ?? ""
+        const responseEmail = await fetch(brevoUrl, {
+          method: 'POST', // Specify the HTTP method
+          headers: {
+            'Content-Type': 'application/json', // Set the content type to JSON
+            'api-key': process.env.NEXT_PUBLIC_BREVO_API_KEY ?? ""
+
+          },
+          body: JSON.stringify({
+            to: [{
+              email,
+              name
+            }],
+            templateId: 1,
+            headers: {  
+              "charset":"iso-8859-1"
+            }
+          }), // Convert the user object to a JSON string
+        });
       } catch (error) {
         setIsLoading(false)
       }
