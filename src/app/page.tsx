@@ -23,6 +23,7 @@ export default function Home() {
     mixpanel.track('Page View', {
       'Page Name': 'Accueil'
     })
+    mixpanel.track('GoTo Page : Accueil')
   }, [])
   return (
     <PageLayout>

@@ -12,6 +12,7 @@ export default function Page() {
     mixpanel.track('Page View', {
       'Page Name': 'Traductions'
     })
+    mixpanel.track('GoTo Page : Traductions')
     return () => {
       mixpanel.track('Page Opened', {'Page Name': 'Traductions'});
     }

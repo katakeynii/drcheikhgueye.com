@@ -11,6 +11,7 @@ export default function Page() {
     mixpanel.track('Page View', {
       'Page Name': 'Publications'
     })
+    mixpanel.track('GoTo Page : Publications')
   }, [])
   return (
     <PageLayout>

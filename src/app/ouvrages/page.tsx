@@ -10,6 +10,7 @@ export default function Page() {
     mixpanel.track('Page View', {
       'Page Name': 'Ouvrages'
     })
+    mixpanel.track('GoTo Page : Ouvrage')
   }, [])
   return (
     <div>
