@@ -1,0 +1,77 @@
+name: Deploy Website
+
+on:
+  push:
+    branches: 
+      - "main"  # Trigger deployment on push to main branch
+  workflow_dispatch: # Allows you to manually trigger this workflow
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Deploy to DigitalOcean droplet via SSH
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST}}  # DigitalOcean droplet IP/hostname
+          username: ${{ secrets.SSH_USERNAME }}  # Server username (e.g., root or deploy)
+          key: ${{ secrets.SSH_PRIVATE_KEY }}  # Private SSH key from your local machine
+          script: |
+            # Navigate to the deployment directory or clone the repository if it doesn't exist
+            if [ ! -d "/var/www/drcheikhgueye.com" ]; then
+              sudo mkdir -p /var/www/drcheikhgueye.com
+              sudo chown -R $USER:$USER /var/www/beezee.app
+              git clone https://github.com/katakeynii/drcheikhgueye.com.git /var/www/beezee.app
+            else
+              cd /var/www/drcheikhgueye.com
+              git pull
+            fi
+
+            cd /var/www/drcheikhgueye.com
+            # Ensure nvm is loaded, install it if not present
+            if ! command -v nvm &> /dev/null; then
+              curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+              export NVM_DIR="$HOME/.nvm"
+              [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            else
+              export NVM_DIR="$HOME/.nvm"
+              [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            fi
+
+            # Install and use Node.js v20.18.0 with nvm
+            nvm install 20.18.0
+            nvm use 20.18.0
+            nvm alias default 20.18.0
+
+
+            which node
+            pwd
+            nvm alias default v20.18.0
+            # Install dependencies and build the application
+            npm i
+            npm run build
+
+            # Check if PM2 is installed, otherwise install it
+            if ! command -v pm2 &> /dev/null; then
+              sudo npm install -g pm2
+            fi
+
+            # Check if the PM2 process is running, if so, reload it, otherwise start it
+            echo "===================================================="
+            echo "Preparing to reload !"
+            echo "===================================================="
+            if pm2 list | grep -q 'beezee.app'; then
+              echo "Ready to reload !"
+               echo "${{ secrets.DEPLOY_PASS }}" | sudo -S pm2 reload drcheikhgueye.com 
+            else
+              echo "Ready to start !"
+              echo $DEPLOY_PASS | pm2 start yarn --interpreter $(which node) --name "drcheikhgueye.com" -- start -p 9000
+            fi
+
+            # Ensure PM2 auto-restarts the app on server reboot
+            # pm2 save
+            # pm2 startup
+
