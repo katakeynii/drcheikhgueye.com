@@ -25,7 +25,7 @@ export default function Home() {
     <PageLayout>
       <main id="head">
         <div className="relative" >
-          <div className="text-3xl font-black p-10 text-center bg-emerald-500 text-white py-16 bg-[url('../assets/bg-green.png')] text-black" >
+          <div className="text-3xl font-black p-10 text-center py-16 bg-[url('../assets/bg-green.png')] text-black" >
             Apprenez la langue arabe car elle fait partie de votre religion
             <span className="text-lg font-light block mt-5" >Omar Ibn Al Khattab</span>
           </div>
@@ -38,7 +38,7 @@ export default function Home() {
                 <h2 className={"text-2xl font-bold text-center md:text-5xl md:font-light md:w-1/2 "}> {"Approche pratique de l'initiation à l'arabe et à la lecture du Saint Coran"} </h2>
                 <Image  alt="dad" src={ArabicBookCover}  width="500" height="500"  />
                 <div className={"md:w-1/2 md:flex md:flex-col md:gap-5 md:justify-center md:items-center"}>
-                  <div className={"w-full bg-black font-black text-white px-10 py-5 text-center text-4xl md:w-1/2"}> 15 000 <sup className={"text-base font-medium"}>FCFA</sup> </div>
+                  <div className={"w-full bg-black font-black text-white px-10 py-5 text-center text-4xl md:w-1/2"}> 10 000 <sup className={"text-base font-medium"}>FCFA</sup> </div>
                   <div className={"text-xl text-justify md:text-center md:text-2xl"}>
                    {" Ce manuel de grammaire arabe pour francophones met l'accent sur les défis conceptuels et méthodologiques de l'apprentissage. Il est structuré en trois parties : la morphologie lexicale, la morphologie grammaticale et les fonctions syntaxiques, aidant ainsi les apprenants à mieux comprendre l'arabe en le comparant au français."}
                     
