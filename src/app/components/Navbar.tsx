@@ -1,8 +1,8 @@
 'use client';
 import Link from "next/link";
 import React, { useState } from "react";
-import NavItem from "./NavItem"
 import TextTransition, { presets } from "react-text-transition";
+import NavItem from "./NavItem";
 
 const MENU_LIST = [
   { text: "Home", href: "/" },
@@ -29,7 +29,7 @@ const Navbar = () => {
       <nav className={`nav`}>
         <Link href={"/"}>
           <div className="logo-container" >
-            <h1 className="logo">Dr. Cheikh GUEYE</h1>
+            <h1 className="logo font-black text-2xl">Dr. Cheikh GUEYE</h1>
             <div className="title">
               <TextTransition springConfig={presets.wobbly}>
                 {titles[index % titles.length]}
