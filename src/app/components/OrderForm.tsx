@@ -19,7 +19,7 @@ type Inputs = {
 import mixpanel from "@/services/mixpanel";
 import useModalStore from "@/stores/useModalStore";
 
-export const OrderForm =  ({ selectedBook }: {selectedBook: string}) => {
+export const OrderForm =  ({ selectedBook }: {selectedBook: string | null}) => {
     const {
       register,
       handleSubmit,

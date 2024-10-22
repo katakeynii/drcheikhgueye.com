@@ -12,8 +12,6 @@ const titles = ['Docteur en science de l’éducation - Inspecteur Général de 
 import mixpanel from '@/services/mixpanel';
 import useModalStore from '@/stores/useModalStore';
 import bookCover from '../assets/Couverture Livre.png';
-import { DownloadForm } from './components/DownloadForm';
-import { OrderForm } from './components/OrderForm';
 
 export default function Home() {
   const [index, setIndex] = React.useState(0);
@@ -65,8 +63,8 @@ export default function Home() {
         </div>
 
       </main>
-        {openedModal === "DOWNLOADS" && <DownloadForm/> }     
-        {openedModal === "ORDERS" && <OrderForm /> }     
+        {/* {openedModal === "DOWNLOADS" && <DownloadForm/> }     
+        {openedModal === "ORDERS" && <OrderForm /> }      */}
     </PageLayout>
   )
 }

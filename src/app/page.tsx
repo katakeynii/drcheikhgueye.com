@@ -16,7 +16,7 @@ import { OrderForm } from './components/OrderForm';
 export default function Home() {
   const [index, setIndex] = React.useState(0);
   const {isModalOpen, toggleModal, openedModal} = useModalStore((state) => state)
-  const [selectedBook, setSelectedBook] = React.useState(null); // État pour stocker le livre sélectionné
+  const [selectedBook, setSelectedBook] = React.useState<string | null>(null); // État pour stocker le livre sélectionné
 
   useEffect(() => {
     mixpanel.track('Page View', {
@@ -25,12 +25,12 @@ export default function Home() {
     mixpanel.track('GoTo Page : Accueil')
   }, [])
 
-  const handleOrderClick = (book) => {
+  const handleOrderClick = (book:string) => {
     setSelectedBook(book); // Enregistre le livre sélectionné
     toggleModal('ORDERS'); // Ouvre le modal de commande
   };
 
-  const handleDownloadClick = (book) => {
+  const handleDownloadClick = (book: string) => {
     setSelectedBook(book); // Enregistre le livre sélectionné
     toggleModal('DOWNLOADS'); // Ouvre le modal de téléchargement
   };
