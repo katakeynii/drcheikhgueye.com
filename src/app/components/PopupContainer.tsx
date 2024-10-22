@@ -1,7 +1,7 @@
-import { useState, useEffect, ReactNode } from "react";
-import styles from '../page.module.scss'
-import Image from 'next/image'
-import bookCover from '../../assets/Couverture Livre.png';
+import Image, { StaticImageData } from 'next/image';
+import { ReactNode, useEffect, useState } from "react";
+import styles from '../page.module.scss';
+// import bookCover from '../../assets/Couverture Livre.png';
 import useModalStore from "@/stores/useModalStore";
 
 type Props = {
@@ -9,7 +9,7 @@ type Props = {
   children: ReactNode
 }
 
-export const PopupContainer = ({title, children}: {title: string, children: ReactNode}) => {
+export const PopupContainer = ({title, bookCover, children}: {title: string, bookCover: StaticImageData, children: ReactNode}) => {
     const [open, setOpen] = useState(false);
     const {isModalOpen, toggleModal, openedModal} = useModalStore((state) => state)
     useEffect(() => {

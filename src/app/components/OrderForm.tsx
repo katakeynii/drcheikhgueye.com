@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
+import styles from '../page.module.scss';
 import { PopupContainer } from "./PopupContainer";
-import styles from '../page.module.scss'
-import Image from 'next/image'
 
 import Lottie from 'react-lottie';
+import ArabicBook from '../../assets/book-arabic-dad.png';
+import GrammarBook from '../../assets/book-grammar-dad.png';
 import loader from '../../assets/loader.json';
 import sentAnimation from '../../assets/mailsent.json';
 
@@ -15,11 +16,10 @@ type Inputs = {
   quantity: string
 }
 
-import { DotLottieReact } from '@lottiefiles/dotlottie-react';
-import useModalStore from "@/stores/useModalStore";
 import mixpanel from "@/services/mixpanel";
+import useModalStore from "@/stores/useModalStore";
 
-export const OrderForm =  () => {
+export const OrderForm =  ({ selectedBook }: {selectedBook: string}) => {
     const {
       register,
       handleSubmit,
@@ -29,6 +29,8 @@ export const OrderForm =  () => {
     const [isSent, setIsSent] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const {isModalOpen, toggleModal} = useModalStore((state) => state)
+    const bookImage = selectedBook === 'book-grammar' ? GrammarBook : ArabicBook
+
     useEffect(() => {
       mixpanel.time_event('Setting Order')
     }, [])
@@ -50,7 +52,7 @@ export const OrderForm =  () => {
             'Content-Type': 'application/json', // Set the content type to JSON
           },
           body: JSON.stringify({
-            name, email, whatsapp, quantity
+            selectedBook, name, email, whatsapp, quantity
           }), // Convert the user object to a JSON string
         });
         if (!response.ok) {
@@ -147,7 +149,7 @@ export const OrderForm =  () => {
         </form>
     )
     return(
-      <PopupContainer title="Passez votre commande">
+      <PopupContainer bookCover={bookImage} title="Passez votre commande">
           {!isSent ? formRenderer() : onSentRenderer() }
       </PopupContainer>
     );

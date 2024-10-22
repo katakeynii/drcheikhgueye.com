@@ -1,26 +1,40 @@
-
 'use client';
 import { Inter } from 'next/font/google';
 import Image from 'next/image';
 import React, { useEffect } from 'react';
-import ArabicBookCover from '../assets/arabic-book.svg';
-import GrammarBookCover from '../assets/grammar-book.svg';
+import ArabicBookCover from '../assets/book-arabic-prez.png';
+import GrammarBookCover from '../assets/book-grammar-prez.png';
 import PageLayout from './components/PageLayout';
 const inter = Inter({ subsets: ['latin'] })
 const titles = ['Docteur en science de l’éducation - Inspecteur Général de l’éducation nationale', 'Traducteur Arabe-Français-Anglais'];
 
 import mixpanel from '@/services/mixpanel';
 import useModalStore from '@/stores/useModalStore';
+import { DownloadForm } from './components/DownloadForm';
+import { OrderForm } from './components/OrderForm';
 
 export default function Home() {
   const [index, setIndex] = React.useState(0);
   const {isModalOpen, toggleModal, openedModal} = useModalStore((state) => state)
+  const [selectedBook, setSelectedBook] = React.useState(null); // État pour stocker le livre sélectionné
+
   useEffect(() => {
     mixpanel.track('Page View', {
       'Page Name': 'Accueil'
     })
     mixpanel.track('GoTo Page : Accueil')
   }, [])
+
+  const handleOrderClick = (book) => {
+    setSelectedBook(book); // Enregistre le livre sélectionné
+    toggleModal('ORDERS'); // Ouvre le modal de commande
+  };
+
+  const handleDownloadClick = (book) => {
+    setSelectedBook(book); // Enregistre le livre sélectionné
+    toggleModal('DOWNLOADS'); // Ouvre le modal de téléchargement
+  };
+
   return (
     <PageLayout>
       <main id="head">
@@ -43,6 +57,11 @@ export default function Home() {
                    {" Ce manuel de grammaire arabe pour francophones met l'accent sur les défis conceptuels et méthodologiques de l'apprentissage. Il est structuré en trois parties : la morphologie lexicale, la morphologie grammaticale et les fonctions syntaxiques, aidant ainsi les apprenants à mieux comprendre l'arabe en le comparant au français."}
                     
                   </div>
+                  {/* Boutons pour le livre 1 */}
+                  <div className="flex gap-5 mt-10 justify-center">
+                    <button className="bg-[color:#91d5aa] text-black rounded-md px-10 py-2" onClick={() => handleOrderClick('book-arabic')}>Commander</button>
+                    <button className="bg-black text-white rounded-md px-10 py-2" onClick={() => handleDownloadClick('book-arabic')}>Télécharger</button>
+                  </div>
                 </div>
               </div>
               <div className=" bg-gray-100 p-10 flex flex-col items-center justify-center bg-[url('../assets/bg-white.png')] relative gap-10">
@@ -53,10 +72,18 @@ export default function Home() {
                   <div className={'text-xl text-justify md:text-center'}>
                     {"Ce manuel de grammaire arabe pour francophones met l'accent sur les défis conceptuels et méthodologiques de l'apprentissage. Il est structuré en trois parties : la morphologie lexicale, la morphologie grammaticale et les fonctions syntaxiques, aidant ainsi les apprenants à mieux comprendre l'arabe en le comparant au français."}
                   </div>
+                  {/* Boutons pour le livre 2 */}
+                  <div className="flex gap-5 justify-center mt-10">
+                    <button className="bg-[color:#91d5aa] text-black rounded-md px-10 py-2 " onClick={() => handleOrderClick('book-grammar')}>Commander</button>
+                    <button className="bg-black text-white rounded-md px-10 py-2" onClick={() => handleDownloadClick('book-grammar')}>Télécharger</button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+          {/* Modals pour les formulaires */}
+          {openedModal === "DOWNLOADS" && <DownloadForm selectedBook={selectedBook} />}
+          {openedModal === "ORDERS" && <OrderForm selectedBook={selectedBook} />}
         </div>
 
       </main>
@@ -64,8 +91,6 @@ export default function Home() {
                   <div className={`bg-[color:#91d5aa] p-5 text-center text-xl w-full`} onClick={() => toggleModal('DOWNLOADS')}> Télécharger la première leçon </div>
                   <div  className={` p-10 w-full p-5 text-center text-xl  bg-gray-200`}  onClick={() => toggleModal('ORDERS')}> Commander le livre </div>
                 </div> */}
-        {/* {openedModal === "DOWNLOADS" && <DownloadForm/> }     
-        {openedModal === "ORDERS" && <OrderForm /> }      */}
     </PageLayout>
   )
 }
@@ -77,3 +102,4 @@ export default function Home() {
 //   <div className={styles.titles} >{titles.map((t, i) => (<div key={i} >{t}</div>) )}</div>
 // </div>
 // </div>
+

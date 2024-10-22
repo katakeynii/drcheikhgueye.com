@@ -1,5 +1,5 @@
 import { formatDate } from "@/services/dateConversion"
-import {google} from "googleapis"
+import { google } from "googleapis"
 // export async function GET(request: Request, res) {
 //     return new Response('Hello, Baaay.js!')
 //   }
@@ -19,41 +19,6 @@ const getSheets = async () => {
     const sheets  = google.sheets({ version: 'v4', auth: auth })
     return sheets
 }
-export  async function GET(request: Request) {
-    const sheets = await getSheets();
-    const range = "Downloads!A:Z"
-
-    try{
-        const response = await sheets.spreadsheets.values.get({
-            spreadsheetId: process.env.NEXT_PUBLIC_GOOGLE_SHEET_ID,
-            range
-        })
-        const appendResponse = sheets.spreadsheets.values.append({
-            range: range,
-            spreadsheetId: process.env.NEXT_PUBLIC_GOOGLE_SHEET_ID,
-            valueInputOption: 'USER_ENTERED',
-            insertDataOption: 'INSERT_ROWS',
-            requestBody: {
-                values: [
-                    ["Mohamed", "Gainde@gamil.com", "GOGOOO"]
-                ]
-            }
-        })
-        return new Response(JSON.stringify({ data: response.data}), {
-            status: 200,
-            headers: { 'Content-Type': 'application/json' },
-        });
-    }
-    catch(error){
-        console.error(error)
-        return new Response(JSON.stringify({ error: "Une erreur s'est produite"}), {
-            status: 500,
-            headers: { 'Content-Type': 'application/json' },
-        });
-    }
-    
-}
-
 // app/api/user/route.ts
 export async function POST(request: Request) {
     const sheets = await getSheets();
@@ -61,7 +26,7 @@ export async function POST(request: Request) {
 
     try{
         const body = await request.json();
-        const { name, email, whatsapp } = body;
+        const { name, selectedBook, email, whatsapp } = body;
         const date = formatDate(new Date());
         const response = await sheets.spreadsheets.values.append({
             range: range,
@@ -70,8 +35,8 @@ export async function POST(request: Request) {
             insertDataOption: 'INSERT_ROWS',
             requestBody: {
                 values: [
-                    [name, email, whatsapp, date]
-                ]
+                    [selectedBook, name, email, whatsapp, date]
+                ] 
             }
         })
         return new Response(JSON.stringify({ data: response.data}), {

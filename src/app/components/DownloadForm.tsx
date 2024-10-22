@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
+import styles from '../page.module.scss';
 import { PopupContainer } from "./PopupContainer";
-import styles from '../page.module.scss'
-import Image from 'next/image'
 
 import Lottie from 'react-lottie';
 import loader from '../../assets/loader.json';
 import sentAnimation from '../../assets/mailsent.json';
+
+import ArabicBook from '../../assets/book-arabic-dad.png';
+import GrammarBook from '../../assets/book-grammar-dad.png';
 
 type Inputs = {
   email: string
@@ -14,11 +16,10 @@ type Inputs = {
   whatsapp: string
 }
 
-import { DotLottieReact } from '@lottiefiles/dotlottie-react';
-import useModalStore from "@/stores/useModalStore";
 import mixpanel from "@/services/mixpanel";
+import useModalStore from "@/stores/useModalStore";
 
-export const DownloadForm =  () => {
+export const DownloadForm =  ({ selectedBook }: { selectedBook: string }) => {
     const {
       register,
       handleSubmit,
@@ -31,6 +32,9 @@ export const DownloadForm =  () => {
       mixpanel.time_event('Filling Download')
     }, [])
     const {isModalOpen, toggleModal} = useModalStore((state) => state)
+
+    const bookImage = selectedBook === 'book-grammar' ? GrammarBook : ArabicBook
+
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
       setIsLoading(true)
       let {
@@ -45,7 +49,7 @@ export const DownloadForm =  () => {
             'Content-Type': 'application/json', // Set the content type to JSON
           },
           body: JSON.stringify({
-            name, email, whatsapp
+            selectedBook, name, email, whatsapp
           }), // Convert the user object to a JSON string
         });
         if (!response.ok) {
@@ -143,7 +147,7 @@ export const DownloadForm =  () => {
         </form>
     )
     return(
-      <PopupContainer title="Télécharger gratuitement le premier chapitre">
+      <PopupContainer bookCover={bookImage} title="Télécharger gratuitement le premier chapitre">
           {!isSent ? formRenderer() : onSentRenderer() }
       </PopupContainer>
     );
